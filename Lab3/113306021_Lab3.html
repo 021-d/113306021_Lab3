@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		body{
+			text-align: center;
+		}
+		img{
+			margin-top: 10px;
+			
+			width: 300px;
+		}
+	</style>
+</head>
+<body>
+	<h1>113306021_Lab3_Number Guessing Game</h1>
+	<div id="result"></div>
+	<script>
+		var answer = Math.floor(Math.random()*100) + 1;
+		var attempts = 7;
+
+		while(attempts > 0) {
+			var guess = window.prompt();
+
+			if(!guess || isNaN(guess)) {
+				alert("非數字");
+				continue;
+			}
+			guess = parseInt(guess, 10);
+
+			if(guess < 1 || guess > 100) {
+				alert("不在範圍內");
+				continue;
+			}
+
+			if (guess === answer) {
+        		alert("正確");
+        		document.getElementById("result").innerHTML = `<img src="correct.jpg" alt="Correct">`;
+        		break;
+      		} else if (guess < answer) {
+        		alert("太低");
+      		} else {
+       			alert("太高");
+      		}
+			attempts--; 
+			if (attempts === 0) {
+        		alert(`正確答案是${answer}.`);
+        		document.getElementById("result").innerHTML = `<img src="wrong.jpg" alt="Wrong">`;
+      		}
+		}
+	</script>
+</body>
+</html>
